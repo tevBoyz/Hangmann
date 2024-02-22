@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>HangMan</title>
+  </head>
+  <body>
+    <div class="main_container">
+      <h1>Hangman</h1>
+      <div class="select-diff">
+        <label for="easy">Difficulty: </label>
+        <select onchange="changeDiff(this.selectedIndex  + 5)">
+          <option value="5" onclick="changeDiff(5)">5 Letters</option>
+          <option value="6" onclick="changeDiff(6)">6 Letters</option>
+          <option value="7" onclick="changeDiff(7)">7 Letters</option>
+          <option value="8" onclick="changeDiff(8)">8 Letters</option>
+          <option value="9" onclick="changeDiff(9)">9 Letters</option>
+          <option value="10" onclick="changeDiff(10)">10 Letters</option>
+          <
+        </select>
+      </div>
+      <div class="figure_cont">
+        <svg class="figure-container">
+          <line x1="60" y1="20" x2="140" y2="20"></line>
+          <line x1="140" y1="20" x2="140" y2="50"></line>
+          <line x1="60" y1="20" x2="60" y2="230"></line>
+          <line x1="20" y1="230" x2="100" y2="230"></line>
+
+          <circle
+            cx="140"
+            cy="70"
+            r="20"
+            class="figure-part"
+            style="display: none"
+          ></circle>
+          <!-- Body -->
+          <line
+            x1="140"
+            y1="90"
+            x2="140"
+            y2="150"
+            class="figure-part"
+            style="display: none"
+          ></line>
+          <!-- Arms -->
+          <line
+            x1="140"
+            y1="120"
+            x2="120"
+            y2="100"
+            class="figure-part"
+            style="display: none"
+          ></line>
+          <line
+            x1="140"
+            y1="120"
+            x2="160"
+            y2="100"
+            class="figure-part"
+            style="display: none"
+          ></line>
+          <!-- Legs -->
+          <line
+            x1="140"
+            y1="150"
+            x2="120"
+            y2="180"
+            class="figure-part"
+            style="display: none"
+          ></line>
+          <line
+            x1="140"
+            y1="150"
+            x2="160"
+            y2="180"
+            class="figure-part"
+            style="display: none"
+          ></line>
+        </svg>
+      </div>
+      <div class="wrong-letters-cont">
+        <span id="wrong-letters"></span>
+      </div>
+      <div id="display" class="display"></div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
