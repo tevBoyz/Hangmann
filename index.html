@@ -8,7 +8,7 @@
   </head>
   <body>
     <div class="main_container">
-      <h1>Hangman</h1>
+      <h1 onclick="restart()">Hangman 🔄</h1>
       <div class="select-diff">
         <label for="easy">Difficulty: </label>
         <select onchange="changeDiff(this.selectedIndex  + 5)">
@@ -85,6 +85,13 @@
       </div>
 
       <div id="display" class="display"></div>
+    </div>
+    <div id="noti" class="notification">
+      <p id="message">This is a message</p>
+      <div class="buttons">
+        <button onclick="closeNoti()">Close</button>
+        <button onclick="restart()">Restart Game</button>
+      </div>
     </div>
     <script src="script.js"></script>
   </body>

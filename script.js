@@ -8,13 +8,13 @@ var wletter = document.getElementById("wrong-letters");
 var boxes = 0;
 var difficulty = 5;
 var lettersInBoxes = Array(difficulty);
-
+var gameOn = true;
 
 fetchWord(difficulty);//console.log(wordToFind);
 
 function startGame(){
+    gameOn = true;
     wordToFind = wordToFind.toUpperCase();
-    console.log("word: ", wordToFind);
     if(wordToFind.length != 0){
         populateBox(difficulty);
         boxes = document.getElementsByClassName('box');
@@ -46,7 +46,6 @@ function fetchWord (difficulty){
   fetch('https://random-word-api.herokuapp.com/word?length=' + difficulty)
    .then((response) => response.json())
    .then((json) => {
-    console.log(json);
     takeWord(json);
 })
    .catch(error => console.error(error));
@@ -60,10 +59,9 @@ function takeWord(data){
 
 // Keydown letter press
 document.addEventListener('keydown', e => {
-		if(e.key.length == 1){
+		if(e.key.length == 1 && gameOn){
             if ((e.key >= "A" && e.key <= 'Z') || (e.key >= 'a' && e.key <= 'z')){
                 const letter = e.key.toUpperCase();
-                console.log(e.key);
     
                 if (wordToFind.includes(letter)) {
                     if (!correctLetters.includes(letter)) {
@@ -71,7 +69,7 @@ document.addEventListener('keydown', e => {
     
                         displayWord(letter);
                     } else {
-                        alert("You've tried this letter, please choose a different one.")
+                        showNoti("You've tried this letter, please choose a different one.")
                     }
                 } else {
                     if (!wrongLetters.includes(letter)) {
@@ -79,7 +77,7 @@ document.addEventListener('keydown', e => {
     
                         updateWrongLettersEl();
                     } else {
-                        alert("You've tried this letter, please choose a different one.")
+                        showNoti("You've tried this letter, please choose a different one.")
                     }
                 }
             }
@@ -95,14 +93,15 @@ function displayWord(letter) {
             lettersInBoxes[i] = letter;
         }
     }
-    setTimeout(checkWin, 500);
+    //setTimeout(checkWin, 2000);
+    checkWin();
 }
 
 function checkWin(){
     let x = lettersInBoxes.join('');
-    if(x === wordToFind){
-        alert("Congratulations! You found the word! Play again?");
-        restart();
+    if(x == wordToFind){
+        showNoti("Congratulations! You found the word! Play again?");
+        //restart();
     }
 }
 
@@ -119,17 +118,18 @@ function updateWrongLettersEl(){
 }
 
 function notify(){
-    alert('You lost, The word was: ' + wordToFind);
-    restart();
+    showNoti('You lost, The word was: ' + wordToFind);
+    gameOn = false;
+    //restart();
 }
 
 function changeDiff(diff){
-    console.log(diff);
     difficulty = diff;
     restart();
 }
 
 function restart(){
+    document.getElementById("noti").style.display = "none";
     wordToFind = "";
     correctLetters = [];
     wrongLetters = [];
@@ -139,4 +139,14 @@ function restart(){
     wletter.innerHTML = "";
     resetBody();
     fetchWord(difficulty);
+}
+
+function closeNoti(){
+    document.getElementById("noti").style.display = "none";
+
+}
+
+function showNoti(message){
+    document.getElementById("noti").style.display = "flex";
+    document.getElementById("message").innerHTML = message;
 }
