@@ -25,6 +25,12 @@ function buildBody(index){
     figure[index].style.display="block";
 }
 
+function resetBody(){
+    for(let i = 0; i < figure.length; i++){
+        figure[i].style.display="none";
+    }
+}
+
 function populateBox(num){
     disp.innerHTML = '';
     var ele = 0;
@@ -92,7 +98,7 @@ function displayWord(letter) {
     let x = lettersInBoxes.join('');
     if(x === wordToFind){
         alert("Congratulations! You found the word! Play again?");
-        fetchWord(difficulty);
+        restart();
     }
 }
 
@@ -102,13 +108,32 @@ function updateWrongLettersEl(){
         buildBody(wrongLetters.length-1);
     }
     else{
-        alert('You lost, The word was: ' + wordToFind);
-        window.location.reload() ;
+        wletter.innerHTML = "Wrong letters: " + wrongLetters.toString();
+        buildBody(wrongLetters.length-1);
+        setTimeout(notify, 1000);
     }
+}
+
+function notify(){
+    alert('You lost, The word was: ' + wordToFind);
+    resetBody();
+    restart();
 }
 
 function changeDiff(diff){
     console.log(diff);
     difficulty = diff;
+    restart();
+}
+
+function restart(){
+    wordToFind = "";
+    correctLetters = [];
+    wrongLetters = [];
+
+    boxes = 0;
+    lettersInBoxes = Array(difficulty);
+    wletter.innerHTML = "";
+
     fetchWord(difficulty);
 }
