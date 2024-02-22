@@ -71,7 +71,7 @@ document.addEventListener('keydown', e => {
     
                         displayWord(letter);
                     } else {
-                        alert("You've guessed this letter, please try again.")
+                        alert("You've tried this letter, please choose a different one.")
                     }
                 } else {
                     if (!wrongLetters.includes(letter)) {
@@ -79,7 +79,7 @@ document.addEventListener('keydown', e => {
     
                         updateWrongLettersEl();
                     } else {
-                        alert("You've guessed this letter, please try again.")
+                        alert("You've tried this letter, please choose a different one.")
                     }
                 }
             }
@@ -95,6 +95,10 @@ function displayWord(letter) {
             lettersInBoxes[i] = letter;
         }
     }
+    setTimeout(checkWin, 500);
+}
+
+function checkWin(){
     let x = lettersInBoxes.join('');
     if(x === wordToFind){
         alert("Congratulations! You found the word! Play again?");
@@ -116,7 +120,6 @@ function updateWrongLettersEl(){
 
 function notify(){
     alert('You lost, The word was: ' + wordToFind);
-    resetBody();
     restart();
 }
 
@@ -134,6 +137,6 @@ function restart(){
     boxes = 0;
     lettersInBoxes = Array(difficulty);
     wletter.innerHTML = "";
-
+    resetBody();
     fetchWord(difficulty);
 }
