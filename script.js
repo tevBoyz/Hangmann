@@ -138,6 +138,7 @@ function restart(){
     lettersInBoxes = Array(difficulty);
     wletter.innerHTML = "";
     resetBody();
+    resetKeys();
     fetchWord(difficulty);
 }
 
@@ -150,3 +151,63 @@ function showNoti(message){
     document.getElementById("noti").style.display = "flex";
     document.getElementById("message").innerHTML = message;
 }
+
+
+function info(){
+    document.getElementById("info").style.display = "flex";
+}
+
+function closeInfo(){
+    document.getElementById("info").style.display = "none";
+
+}
+
+// Keyboard section
+
+document.addEventListener('keydown', function(event) {
+    const pressedKey = event.key.toUpperCase();
+    const keyElement = document.querySelector(`.key[data-key="${pressedKey.charCodeAt(0)}"]`);
+    
+    if (keyElement) {
+      keyElement.classList.add('active');
+    }
+  });
+  
+  document.addEventListener('keyup', function(event) {
+    const pressedKey = event.key.toUpperCase();
+    const keyElement = document.querySelector(`.key[data-key="${pressedKey.charCodeAt(0)}"]`);
+    
+    if (keyElement) {
+      keyElement.classList.remove('active');
+    }
+  });
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    const keys = document.getElementsByClassName('key');
+    
+    for (let i = 0; i < keys.length; i++) {
+        const keyCode = parseInt(keys[i].getAttribute('data-key'));
+        //console.log(keyCode);
+        keys[i].addEventListener('click', function() {
+            simulateKeyPress(keyCode);
+          });
+    }
+    
+  });
+  
+  function simulateKeyPress(keyCode) {
+    if(gameOn){
+        const event = new KeyboardEvent('keydown', {
+            key: String.fromCharCode(keyCode),      
+          });
+          
+          document.dispatchEvent(event);
+    }
+  }
+
+  function resetKeys(){
+    let keys = document.getElementsByClassName('key');
+    for(let i = 0; i<keys.length; i++){
+        keys[i].classList.remove('active');
+    }
+  }

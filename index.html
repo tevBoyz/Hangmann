@@ -7,8 +7,14 @@
     <title>HangMan</title>
   </head>
   <body>
+    <div class="nav">
+      <h1>HangMan</h1>
+      <div class="actions">
+        <a id="restartNav" onclick="restart()" title="Restart"> 🔄</a>
+        <a id="infoNav" onclick="info()" title="Instructions"> ❔</a>
+      </div>
+    </div>
     <div class="main_container">
-      <h1 onclick="restart()">Hangman 🔄</h1>
       <div class="select-diff">
         <label for="easy">Difficulty: </label>
         <select onchange="changeDiff(this.selectedIndex  + 5)">
@@ -85,13 +91,61 @@
       </div>
 
       <div id="display" class="display"></div>
+
+      <div class="keyboard">
+        <div class="row">
+          <div class="key" data-key="81">Q</div>
+          <div class="key" data-key="87">W</div>
+          <div class="key" data-key="69">E</div>
+          <div class="key" data-key="82">R</div>
+          <div class="key" data-key="84">T</div>
+          <div class="key" data-key="89">Y</div>
+          <div class="key" data-key="85">U</div>
+          <div class="key" data-key="73">I</div>
+          <div class="key" data-key="79">O</div>
+          <div class="key" data-key="80">P</div>
+        </div>
+        <div class="row">
+          <div class="key" data-key="65">A</div>
+          <div class="key" data-key="83">S</div>
+          <div class="key" data-key="68">D</div>
+          <div class="key" data-key="70">F</div>
+          <div class="key" data-key="71">G</div>
+          <div class="key" data-key="72">H</div>
+          <div class="key" data-key="74">J</div>
+          <div class="key" data-key="75">K</div>
+          <div class="key" data-key="76">L</div>
+        </div>
+        <div class="row">
+          <div class="key" data-key="90">Z</div>
+          <div class="key" data-key="88">X</div>
+          <div class="key" data-key="67">C</div>
+          <div class="key" data-key="86">V</div>
+          <div class="key" data-key="66">B</div>
+          <div class="key" data-key="78">N</div>
+          <div class="key" data-key="77">M</div>
+        </div>
+        <!-- More rows and keys can be added here -->
+      </div>
     </div>
+
     <div id="noti" class="notification">
       <p id="message">This is a message</p>
       <div class="buttons">
         <button onclick="closeNoti()">Close</button>
         <button onclick="restart()">Restart Game</button>
       </div>
+    </div>
+
+    <div id="info" class="info">
+      <h1>Hangman Game</h1>
+      <ol type="1" id="information">
+        <li>Find the hidden word by typing it out</li>
+        <li>If you get a wrong letter the mans body appears.</li>
+        <li>if the man if full hanged the game is over.</li>
+        <li>You can select level of diffuclty</li>
+      </ol>
+      <button onclick="closeInfo()">Close</button>
     </div>
     <script src="script.js"></script>
   </body>

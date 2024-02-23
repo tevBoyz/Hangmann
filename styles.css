@@ -10,6 +10,31 @@ body {
   background-color: rgb(125, 132, 238);
 }
 
+.nav {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(187, 190, 235);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.nav h1 {
+  font-family: monospace;
+  font-size: 30px;
+  padding-left: 20px;
+}
+
+.nav a {
+  font-size: 25px;
+  padding-right: 10px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .main_container {
   height: 90vh;
   width: 80%;
@@ -47,10 +72,12 @@ body {
 
 .display {
   width: fit-content;
-  height: 100px;
+  min-width: 450px;
+  height: fit-content;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .box {
@@ -65,6 +92,9 @@ body {
 
 .box span {
   font-size: large;
+  font-family: monospace;
+  font-weight: 400;
+  color: white;
 }
 
 .wrong-letters-cont {
@@ -100,6 +130,36 @@ body {
   padding: 20px;
 }
 
+.info {
+  width: fit-content;
+  height: 400px;
+  background-color: rgb(255, 255, 255);
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  border-radius: 30px;
+}
+
+.info h1 {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.info li {
+  font-size: 20px;
+  text-align: left;
+  padding-top: 15px;
+}
+
+.info button {
+  height: 50px;
+  width: 80px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
 .buttons {
   height: 40px;
   width: 100%;
@@ -117,4 +177,34 @@ button {
 
 button:hover {
   background-color: rgb(125, 132, 238);
+}
+
+/* Keyboard section */
+
+.keyboard {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.key {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  cursor: pointer;
+  font-family: monospace;
+  font-size: 18px;
+}
+
+.key.active {
+  background-color: #ccc;
 }
