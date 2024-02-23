@@ -208,3 +208,11 @@ button:hover {
 .key.active {
   background-color: #ccc;
 }
+
+@media only screen and (max-width: 650px) {
+  .keyboard {
+    width: 310px;
+    display: flex;
+    flex-direction: column;
+  }
+}
