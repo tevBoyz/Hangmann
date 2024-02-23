@@ -106,6 +106,13 @@ body {
   align-items: center;
 }
 
+#wrong-letters {
+  width: 100%;
+  font-family: monospace;
+  font-size: 15px;
+  text-align: left;
+}
+
 .select-diff {
   width: fit-content;
   height: 30px;
@@ -115,13 +122,15 @@ body {
 .notification {
   width: 400px;
   height: 200px;
-  background-color: rgb(255, 255, 255);
+  background-color: #7d84ee;
   display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: absolute;
+  top: 25%;
   border-radius: 30px;
+  border: 2px solid white;
 }
 
 #message {
@@ -133,24 +142,30 @@ body {
 .info {
   width: fit-content;
   height: 400px;
-  background-color: rgb(255, 255, 255);
+  background-color: #7d84ee;
   display: none;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   position: absolute;
+  top: 25%;
   border-radius: 30px;
+  border: 2px solid white;
 }
 
 .info h1 {
   text-align: center;
   padding-top: 20px;
+  font-family: monospace;
+  color: white;
 }
 
 .info li {
   font-size: 20px;
   text-align: left;
   padding-top: 15px;
+  font-family: monospace;
+  color: white;
 }
 
 .info button {

@@ -107,7 +107,7 @@ function checkWin(){
 
 function updateWrongLettersEl(){
     if(wrongLetters.length < figure.length) {
-        wletter.innerHTML = "Wrong letters: " + wrongLetters.toString();
+        wletter.innerHTML = "Wrong letters: <br/>" + wrongLetters.toString();
         buildBody(wrongLetters.length-1);
     }
     else{
