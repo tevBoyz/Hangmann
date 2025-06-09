@@ -294,7 +294,7 @@ function populateBox(num){
 function fetchWord (){
     wordToFind = words[Math.floor(Math.random() * words.length)];
     startGame();
-    console.log("Word to find: " + wordToFind);
+    // console.log("Word to find: " + wordToFind);
 }
 
 
